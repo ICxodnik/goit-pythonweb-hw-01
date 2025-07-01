@@ -1,5 +1,9 @@
+import logging
 from abc import ABC, abstractmethod
 from typing import List
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class Book:
@@ -54,7 +58,7 @@ class LibraryManager:
     def show_books(self) -> None:
         books = self.library.get_books()
         if not books:
-            print("Library is empty.")
+            logger.info("Library is empty.")
         else:
             for book in books:
                 logger.info(str(book))
@@ -81,7 +85,7 @@ def main() -> None:
             case "exit":
                 break
             case _:
-                print("Invalid command. Please try again.")
+                logger.info("Invalid command. Please try again.")
 
 
 if __name__ == "__main__":
